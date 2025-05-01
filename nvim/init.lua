@@ -1,5 +1,5 @@
-require 'core.options'  -- Load general options
-require 'core.keymaps'  -- Load general keymaps
+require 'core.options' -- Load general options
+require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
 
 -- Set up the Lazy plugin manager
@@ -15,10 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup {
-  require 'plugins.alpha',
+  --require 'plugins.alpha',
   require 'plugins.autocompletion',
   --require("plugins.bufferline"),
-  require 'plugins.catppuccin',
+  --require 'plugins.catppuccin',
+  require 'plugins.everforest',
   require 'plugins.debugger',
   require 'plugins.gitsigns',
   require 'plugins.indent-blankline',

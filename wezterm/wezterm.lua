@@ -2,13 +2,51 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 local act = wezterm.action
+local colors = {}
+
+colors.catppuccin = {
+	tab_bar = {
+		background = "#1e1e2e",
+		active_tab = {
+			fg_color = "#1e1e2e",
+			bg_color = "#cba6f7",
+			intensity = "Bold",
+			italic = true,
+		},
+		inactive_tab = {
+			fg_color = "#cdd6f4",
+			bg_color = "#313244",
+			intensity = "Half",
+			italic = false,
+		},
+	},
+}
+
+colors.everforest = {
+	tab_bar = {
+		background = "#2D353B",
+		active_tab = {
+			fg_color = "#D3C6AA",
+			bg_color = "#56635F",
+			intensity = "Bold",
+			italic = true,
+		},
+		inactive_tab = {
+			fg_color = "#D3C6AA",
+			bg_color = "#2D353B",
+			intensity = "Half",
+			italic = false,
+		},
+	},
+}
 
 config = {
 	automatically_reload_config = true,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
 	default_cursor_style = "BlinkingBar",
-	color_scheme = "Catppuccin Mocha",
+	color_scheme_dirs = { "~/.config/wezterm/colors" },
+	color_scheme = "Everforest Dark (Medium)",
 	line_height = 1.0,
 	--	font = wezterm.font("Hasklug Nerd Font", {
 	--	font = wezterm.font("MesloLGL Nerd Font", {
@@ -18,7 +56,7 @@ config = {
 		style = "Normal",
 	}),
 	font_size = 18,
-	window_background_opacity = 0.65,
+	window_background_opacity = 1.0, -- 0.65,
 	macos_window_background_blur = 100,
 	window_padding = {
 		left = 60,
@@ -37,24 +75,9 @@ config.use_fancy_tab_bar = false
 config.show_tabs_in_tab_bar = true
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
+config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 20
-config.colors = {
-	tab_bar = {
-		background = "#1e1e2e",
-		active_tab = {
-			fg_color = "#1e1e2e",
-			bg_color = "#cba6f7",
-			intensity = "Bold",
-			italic = true,
-		},
-		inactive_tab = {
-			fg_color = "#cdd6f4",
-			bg_color = "#313244",
-			intensity = "Half",
-			italic = false,
-		},
-	},
-}
+config.colors = colors.everforest
 -- config.text_background_opacity = 0.8
 
 -- Inactiave pane brightness
