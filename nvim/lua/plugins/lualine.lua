@@ -21,6 +21,14 @@ return {
       -- 3: Shows buffer number
       -- 4: Shows buffer name + buffer number
 
+      --user_mode_colors = true,
+
+      buffers_color = {
+        -- Same values as the general color option can be used here.
+        active = 'MyBufferActive',     -- Color for active buffer.
+        inactive = 'MyBufferInactive', -- Color for inactive buffer.
+      },
+
       symbols = {
         modified = ' ●', -- Text to show when the buffer is modified
         alternate_file = '', -- Text to show to identify the alternate file
@@ -54,6 +62,7 @@ return {
       options = {
         icons_enabled = true,
         --theme = 'catppuccin', -- Set theme based on environment variable
+        theme = 'everforest',
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        

@@ -6,7 +6,10 @@ return {
   -- Optional; default configuration will be used if setup isn't called.
   config = function()
     require('everforest').setup {
-      -- Your config here
+      on_highlights = function(hl, palette)
+        hl.MyBufferActive = { fg = palette.bg_dim, bg = palette.statusline1 }
+        hl.MyBufferInactive = { fg = palette.gray1, bg = palette.bg1 }
+      end,
     }
     vim.cmd.colorscheme 'everforest'
   end,
