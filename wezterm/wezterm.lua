@@ -8,7 +8,7 @@ config = {
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
 	default_cursor_style = "BlinkingBar",
-	color_scheme = "Catppuccin Frappe", --Catppuccin Mocha",
+	color_scheme = "Catppuccin Mocha",
 	line_height = 1.0,
 	--	font = wezterm.font("Hasklug Nerd Font", {
 	--	font = wezterm.font("MesloLGL Nerd Font", {
@@ -18,7 +18,7 @@ config = {
 		style = "Normal",
 	}),
 	font_size = 18,
-	window_background_opacity = 1.0, --0.65,
+	window_background_opacity = 0.65,
 	macos_window_background_blur = 100,
 	window_padding = {
 		left = 60,
@@ -212,10 +212,10 @@ config.key_tables = {
 	-- 'resize_pane' here corresponds to the name="resize_pane" in
 	-- the key assignments above.
 	split_pane = {
-		{ key = "h", action = act.SplitPane({ direction = "Left" }) },
-		{ key = "l", action = act.SplitPane({ direction = "Right" }) },
-		{ key = "k", action = act.SplitPane({ direction = "Up" }) },
-		{ key = "j", action = act.SplitPane({ direction = "Down" }) },
+		{ key = "h",      action = act.SplitPane({ direction = "Left" }) },
+		{ key = "l",      action = act.SplitPane({ direction = "Right" }) },
+		{ key = "k",      action = act.SplitPane({ direction = "Up" }) },
+		{ key = "j",      action = act.SplitPane({ direction = "Down" }) },
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
 	},
@@ -225,10 +225,10 @@ config.key_tables = {
 	--},
 
 	resize_pane = {
-		{ key = "h", action = act.AdjustPaneSize({ "Left", 5 }) },
-		{ key = "l", action = act.AdjustPaneSize({ "Right", 5 }) },
-		{ key = "k", action = act.AdjustPaneSize({ "Up", 5 }) },
-		{ key = "j", action = act.AdjustPaneSize({ "Down", 5 }) },
+		{ key = "h",      action = act.AdjustPaneSize({ "Left", 5 }) },
+		{ key = "l",      action = act.AdjustPaneSize({ "Right", 5 }) },
+		{ key = "k",      action = act.AdjustPaneSize({ "Up", 5 }) },
+		{ key = "j",      action = act.AdjustPaneSize({ "Down", 5 }) },
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
 	},

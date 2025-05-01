@@ -5,8 +5,8 @@ return {
     lazy = false,
     config = function()
         require('catppuccin').setup {
-            transparent_background = false, --true,
-            styles = {                -- Handles the styles of general hi groups (see `:h highlight-args`):
+            transparent_background = true,
+            styles = {           -- Handles the styles of general hi groups (see `:h highlight-args`):
                 comments = { 'italic' }, -- Change the style of comments
                 conditionals = { 'bold' },
                 loops = { 'bold' },
