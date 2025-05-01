@@ -2,43 +2,6 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 local act = wezterm.action
-local colors = {}
-
-colors.catppuccin = {
-	tab_bar = {
-		background = "#1e1e2e",
-		active_tab = {
-			fg_color = "#1e1e2e",
-			bg_color = "#cba6f7",
-			intensity = "Bold",
-			italic = true,
-		},
-		inactive_tab = {
-			fg_color = "#cdd6f4",
-			bg_color = "#313244",
-			intensity = "Half",
-			italic = false,
-		},
-	},
-}
-
-colors.everforest = {
-	tab_bar = {
-		background = "#2D353B",
-		active_tab = {
-			fg_color = "#D3C6AA",
-			bg_color = "#56635F",
-			intensity = "Bold",
-			italic = true,
-		},
-		inactive_tab = {
-			fg_color = "#D3C6AA",
-			bg_color = "#2D353B",
-			intensity = "Half",
-			italic = false,
-		},
-	},
-}
 
 config = {
 	automatically_reload_config = true,
@@ -46,7 +9,7 @@ config = {
 	window_decorations = "RESIZE",
 	default_cursor_style = "BlinkingBar",
 	color_scheme_dirs = { "~/.config/wezterm/colors" },
-	color_scheme = "Everforest Dark (Medium)",
+	color_scheme = "Gooey (Gogh)",
 	line_height = 1.0,
 	--	font = wezterm.font("Hasklug Nerd Font", {
 	--	font = wezterm.font("MesloLGL Nerd Font", {
@@ -77,7 +40,6 @@ config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 config.tab_max_width = 20
-config.colors = colors.everforest
 -- config.text_background_opacity = 0.8
 
 -- Inactiave pane brightness
@@ -235,10 +197,10 @@ config.key_tables = {
 	-- 'resize_pane' here corresponds to the name="resize_pane" in
 	-- the key assignments above.
 	split_pane = {
-		{ key = "h",      action = act.SplitPane({ direction = "Left" }) },
-		{ key = "l",      action = act.SplitPane({ direction = "Right" }) },
-		{ key = "k",      action = act.SplitPane({ direction = "Up" }) },
-		{ key = "j",      action = act.SplitPane({ direction = "Down" }) },
+		{ key = "h", action = act.SplitPane({ direction = "Left" }) },
+		{ key = "l", action = act.SplitPane({ direction = "Right" }) },
+		{ key = "k", action = act.SplitPane({ direction = "Up" }) },
+		{ key = "j", action = act.SplitPane({ direction = "Down" }) },
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
 	},
@@ -248,10 +210,10 @@ config.key_tables = {
 	--},
 
 	resize_pane = {
-		{ key = "h",      action = act.AdjustPaneSize({ "Left", 5 }) },
-		{ key = "l",      action = act.AdjustPaneSize({ "Right", 5 }) },
-		{ key = "k",      action = act.AdjustPaneSize({ "Up", 5 }) },
-		{ key = "j",      action = act.AdjustPaneSize({ "Down", 5 }) },
+		{ key = "h", action = act.AdjustPaneSize({ "Left", 5 }) },
+		{ key = "l", action = act.AdjustPaneSize({ "Right", 5 }) },
+		{ key = "k", action = act.AdjustPaneSize({ "Up", 5 }) },
+		{ key = "j", action = act.AdjustPaneSize({ "Down", 5 }) },
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
 	},

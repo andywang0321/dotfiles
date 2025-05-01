@@ -1,5 +1,5 @@
-require 'core.options'  -- Load general options
-require 'core.keymaps'  -- Load general keymaps
+require 'core.options' -- Load general options
+require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
 
 -- Set up the Lazy plugin manager
@@ -19,10 +19,11 @@ require('lazy').setup {
   require 'plugins.autocompletion',
   --require("plugins.bufferline"),
   --require 'plugins.catppuccin',
-  require 'plugins.everforest',
+  --require 'plugins.everforest',
   require 'plugins.debugger',
   require 'plugins.gitsigns',
   require 'plugins.indent-blankline',
+  --require 'plugins.kanagawa',
   require 'plugins.lsp',
   require 'plugins.lualine',
   require 'plugins.misc',
