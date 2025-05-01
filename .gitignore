@@ -7,3 +7,4 @@ skhd/
 wandb/
 yabai/
 karabiner/automatic_backups/
+nvim/lazy-lock.json
