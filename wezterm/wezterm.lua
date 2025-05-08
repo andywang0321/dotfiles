@@ -217,10 +217,10 @@ config.key_tables = {
 	-- 'resize_pane' here corresponds to the name="resize_pane" in
 	-- the key assignments above.
 	split_pane = {
-		{ key = "h", action = act.SplitPane({ direction = "Left" }) },
-		{ key = "l", action = act.SplitPane({ direction = "Right" }) },
-		{ key = "k", action = act.SplitPane({ direction = "Up" }) },
-		{ key = "j", action = act.SplitPane({ direction = "Down" }) },
+		{ key = "h",      action = act.SplitPane({ direction = "Left" }) },
+		{ key = "l",      action = act.SplitPane({ direction = "Right" }) },
+		{ key = "k",      action = act.SplitPane({ direction = "Up" }) },
+		{ key = "j",      action = act.SplitPane({ direction = "Down" }) },
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
 	},
@@ -230,10 +230,10 @@ config.key_tables = {
 	--},
 
 	resize_pane = {
-		{ key = "h", action = act.AdjustPaneSize({ "Left", 5 }) },
-		{ key = "l", action = act.AdjustPaneSize({ "Right", 5 }) },
-		{ key = "k", action = act.AdjustPaneSize({ "Up", 5 }) },
-		{ key = "j", action = act.AdjustPaneSize({ "Down", 5 }) },
+		{ key = "h",      action = act.AdjustPaneSize({ "Left", 5 }) },
+		{ key = "l",      action = act.AdjustPaneSize({ "Right", 5 }) },
+		{ key = "k",      action = act.AdjustPaneSize({ "Up", 5 }) },
+		{ key = "j",      action = act.AdjustPaneSize({ "Down", 5 }) },
 		-- Cancel the mode by pressing escape
 		{ key = "Escape", action = "PopKeyTable" },
 	},
