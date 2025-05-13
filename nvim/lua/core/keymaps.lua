@@ -16,25 +16,27 @@ vim.keymap.set('n', '<A-k>', ':m -2<CR>', opts)
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
 
--- Duplicating line/selection
-vim.keymap.set('n', '<leader>dd', ':t .<CR>', { desc = '[D]uplicate [D]own', noremap = true, silent = true })
-vim.keymap.set('v', '<leader>dd', custom.duplicate_selection, { desc = '[D]uplicate [D]own', noremap = true, silent = true })
-
 -- Map <leader>i in Normal mode to trigger the debug_or_toggle function.
-vim.keymap.set('n', '<leader>i', custom.debug_or_toggle, { desc = 'Toggle [I]nteractive Pane', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>i', custom.debug_or_toggle,
+  { desc = 'Toggle [I]nteractive Pane', noremap = true, silent = true })
 -- Map <Shift-ENTER> in visual mode to send the visually selected text to the debug pane.
-vim.keymap.set('v', '<S-CR>', custom.send_selection, { desc = 'Send Selection to Interactive', noremap = true, silent = true })
+vim.keymap.set('v', '<S-CR>', custom.send_selection,
+  { desc = 'Send Selection to Interactive', noremap = true, silent = true })
 -- Map <Shift-ENTER> in normal or insert mode to send current line to the debug pane.
-vim.keymap.set({ 'n', 'i' }, '<S-CR>', custom.send_line, { desc = 'Send Line to Interactive', noremap = true, silent = true })
+vim.keymap.set({ 'n', 'i' }, '<S-CR>', custom.send_line,
+  { desc = 'Send Line to Interactive', noremap = true, silent = true })
 -- Map <leader><ENTER> in normal mode to send newlines to the debug pane.
-vim.keymap.set('n', '<leader><CR>', custom.send_newline, { desc = 'Send Newline to Interactive', noremap = true, silent = true })
+vim.keymap.set('n', '<leader><CR>', custom.send_newline,
+  { desc = 'Send Newline to Interactive', noremap = true, silent = true })
 -- Map <leader>p in normal mode to send the entire buffer to the debug pane.
-vim.keymap.set('n', '<leader>p', custom.send_buffer, { desc = 'Send Buffer to Interactive', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>p', custom.send_buffer,
+  { desc = 'Send Buffer to Interactive', noremap = true, silent = true })
 
 -- Obsidian vault
 local zettelkasten = '/Users/andywang/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Zettelkasten'
 -- navigate to vault
-vim.keymap.set('n', '<leader>oo', ':cd ' .. zettelkasten .. '<cr>', { desc = '[O]pen [O]bsidian Vault', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>oo', ':cd ' .. zettelkasten .. '<cr>',
+  { desc = '[O]pen [O]bsidian Vault', noremap = true, silent = true })
 -- convert note to template and remove leading white space
 vim.keymap.set(
   'n',
@@ -76,7 +78,7 @@ vim.keymap.set('n', '<leader>x', ':bdelete!<CR>', opts) -- close buffer
 vim.keymap.set('n', '<leader>wl', '<C-w>v', opts) -- split window vertically
 vim.keymap.set('n', '<leader>wj', '<C-w>s', opts) -- split window horizontally
 vim.keymap.set('n', '<leader>w=', '<C-w>=', opts) -- make split windows equal width & height
-vim.keymap.set('n', '<C-q>', ':q<CR>', opts) -- close current split window
+vim.keymap.set('n', '<C-q>', ':q<CR>', opts)      -- close current split window
 vim.keymap.set('n', '<leader>t', function()
   custom.binary_split()
 end, opts) -- create binary split
@@ -96,10 +98,10 @@ vim.keymap.set('n', '<C-l>', function()
 end, opts)
 
 -- Tabs
-vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', opts) -- open new tab
+vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', opts)   -- open new tab
 vim.keymap.set('n', '<leader>tw', ':tabclose<CR>', opts) -- close current tab
-vim.keymap.set('n', '<leader>t]', ':tabn<CR>', opts) --  go to next tab
-vim.keymap.set('n', '<leader>t[', ':tabp<CR>', opts) --  go to previous tab
+vim.keymap.set('n', '<leader>t]', ':tabn<CR>', opts)     --  go to next tab
+vim.keymap.set('n', '<leader>t[', ':tabp<CR>', opts)     --  go to previous tab
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', opts)
