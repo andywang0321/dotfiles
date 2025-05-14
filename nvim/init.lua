@@ -22,7 +22,7 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 -- see `:help vim.api.nvim_create_autocmd()`
 -- see `:help vim.api.nvim_create_augroup()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking text',
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-    callback = function() vim.highlight.on_yank() end,
+  desc = 'Highlight when yanking text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function() vim.highlight.on_yank() end,
 })
