@@ -18,24 +18,33 @@ Neovim already has a really nice LSP client built in, it is now just waiting for
 --]]
 
 return {
-  "neovim/nvim-lspconfig",
-  -- This lets lua-ls stop panicking in our neovim config lua files (remember the 'undefined global: vim' errors?)
-  dependencies = {
-    {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
-      opts = {
-	library = {
-	  -- See the configuration section for more details
-	  -- Load luvit types when the `vim.uv` word is found
-	  { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+	"neovim/nvim-lspconfig",
+	-- This lets lua-ls stop panicking in our neovim config lua files (remember the 'undefined global: vim' errors?)
+	dependencies = {
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			opts = { library = { path = "${3rd}/luv/library", words = { "vim%.uv" } }, },
+		},
 	},
-      },
-    },
-  },
-  config = function()
-    -- require("lspconfig").YOUR_LSP_HERE.setup({})
-    -- see `:help lspconfig-all` to find some LSPs!
-    require'lspconfig'.lua_ls.setup{}
-  end,
+	config = function()
+		-- require("lspconfig").YOUR_LSP_HERE.setup({})
+		-- see `:help lspconfig-all` to find some LSPs!
+		require 'lspconfig'.lua_ls.setup {}
+
+		-- format current buffer on save
+		vim.api.nvim_create_autocmd('LspAttach', {
+			callback = function(args)
+				local client = vim.lsp.get_client_by_id(args.data.client_id)
+				if not client then return end
+
+				if client.supports_method('textDocument/formatting') then
+					vim.api.nvim_create_autocmd('BufWritePre', {
+						buffer = args.buf,
+						callback = function() vim.lsp.buf.format({ bufnr = args.buf, id = client.id }) end,
+					})
+				end
+			end,
+		})
+	end,
 }
