@@ -15,10 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup {
-  --require 'plugins.alpha',
   require 'plugins.autocompletion',
-  --require("plugins.bufferline"),
-  --require 'plugins.catppuccin',
   require 'plugins.everforest',
   require 'plugins.debugger',
   require 'plugins.gitsigns',
@@ -29,7 +26,6 @@ require('lazy').setup {
   require 'plugins.none-ls',
   require 'plugins.obsidian',
   require 'plugins.oil',
-  --require("plugins.smart-splits"),
   require 'plugins.telescope',
   require 'plugins.treesitter',
 }
