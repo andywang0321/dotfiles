@@ -12,13 +12,17 @@ return {
 	config = function()
 		require("telescope").setup { extensions = { fzf = {} } }
 		require("telescope").load_extension('fzf')
+		local map = function(keys, func, desc) vim.keymap.set("n", keys, func, { desc = "Telescope: " .. desc }) end
 		local tb = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>ff", tb.find_files)
-		vim.keymap.set("n", "<leader>conf", function() tb.find_files { cwd = vim.fn.stdpath("config") } end)
-		vim.keymap.set("n", "<leader>oo", function() tb.find_files { cwd = os.getenv("ZETTELKASTEN") } end)
-		vim.keymap.set("n", "<leader>help", tb.help_tags)
-		-- custom live grep
-		local custom = require("custom.telescope.filtergrep")
-		vim.keymap.set("n", "<leader>fg", custom.filter_grep)
+		map("<leader>ff", tb.find_files, "Find Files")
+		map("<leader>fg", require("custom.telescope.filtergrep").filter_grep, "Live Grep with Filtering")
+		map("<leader>conf", function() tb.find_files { cwd = vim.fn.stdpath("config") } end, "Neovim Config")
+		map("<leader>oo", function() tb.find_files { cwd = os.getenv("ZETTELKASTEN") } end, "Obsidian Vault")
+		map("<leader>help", tb.help_tags, "Find Help")
+		map("<leader>spell", tb.spell_suggest, "Spelling Suggestions")
+		map("<leader>reg", tb.registers, "Registers")
+		map("<leader>comm", tb.command_history, "Command History")
+		map("<leader>buff", tb.buffers, "Buffers")
+		map("<leader>diag", tb.diagnostics, "Diagnostics")
 	end
 }

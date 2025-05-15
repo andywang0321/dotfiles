@@ -19,7 +19,7 @@ Neovim already has a really nice LSP client built in, it is now just waiting for
 
 return {
 	"neovim/nvim-lspconfig",
-	-- This lets lua-ls stop panicking in our neovim config lua files (remember the 'undefined global: vim' errors?)
+	-- This lets lua-ls stop panicking in our neovim config lua files (remember the "undefined global: vim" errors?)
 	dependencies = {
 		{
 			"folke/lazydev.nvim",
@@ -30,25 +30,45 @@ return {
 	config = function()
 		-- require("lspconfig").YOUR_LSP_HERE.setup({})
 		-- see `:help lspconfig-all` to find some LSPs!
-		local lsp = require('lspconfig')
+		local lsp = require("lspconfig")
 		lsp.lua_ls.setup {}
 		lsp.ruff.setup {}
 		lsp.basedpyright.setup {}
 
 		-- keymaps, for more see `:help vim.lsp.buf`
-		vim.keymap.set("n", "K", vim.lsp.buf.hover)
-		vim.keymap.set("n", "<leader>def", vim.lsp.buf.definition)
-		vim.keymap.set("n", "<leader>act", vim.lsp.buf.code_action)
-		vim.keymap.set("n", "<leader>name", vim.lsp.buf.rename)
+		local map = function(keys, func, desc) vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc }) end
+		map("K", vim.lsp.buf.hover, "Hover Documentation")
+		map("<leader>act", vim.lsp.buf.code_action, "Code Actions")
+		map("<leader>name", vim.lsp.buf.rename, "Rename")
+		--map("<leader>def", vim.lsp.buf.definition, "Goto Definition")
+		local tb = require("telescope.builtin")
+		map("<leader>def", tb.lsp_definitions, "Goto Definition")
+		map("<leader>ref", tb.lsp_references, "Goto References")
+		map("<leader>imp", tb.lsp_implementations, "Goto Implementation")
+		map("<leader>type", tb.lsp_type_definitions, "Goto Type Definition")
+		map("<leader>sym", tb.lsp_document_symbols, "Document Symbols")
 
-		-- format current buffer on save
-		vim.api.nvim_create_autocmd('LspAttach', {
+
+
+		-- on LspAttach, enable the following features
+		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
 				if not client then return end
 
-				if client.supports_method('textDocument/formatting') then
-					vim.api.nvim_create_autocmd('BufWritePre', {
+				-- highlight references to word under cursor
+				if client.server_capabilities.documentHighlightProvider then
+					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+						buffer = args.buf, callback = vim.lsp.buf.document_highlight,
+					})
+					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+						buffer = args.buf, callback = vim.lsp.buf.clear_references,
+					})
+				end
+
+				-- format buffer on save
+				if client.supports_method("textDocument/formatting") then
+					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = args.buf,
 						callback = function() vim.lsp.buf.format({ bufnr = args.buf, id = client.id }) end,
 					})
