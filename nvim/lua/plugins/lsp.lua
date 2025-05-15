@@ -30,7 +30,16 @@ return {
 	config = function()
 		-- require("lspconfig").YOUR_LSP_HERE.setup({})
 		-- see `:help lspconfig-all` to find some LSPs!
-		require 'lspconfig'.lua_ls.setup {}
+		local lsp = require('lspconfig')
+		lsp.lua_ls.setup {}
+		lsp.ruff.setup {}
+		lsp.basedpyright.setup {}
+
+		-- keymaps, for more see `:help vim.lsp.buf`
+		vim.keymap.set("n", "K", vim.lsp.buf.hover)
+		vim.keymap.set("n", "<leader>def", vim.lsp.buf.definition)
+		vim.keymap.set("n", "<leader>act", vim.lsp.buf.code_action)
+		vim.keymap.set("n", "<leader>name", vim.lsp.buf.rename)
 
 		-- format current buffer on save
 		vim.api.nvim_create_autocmd('LspAttach', {
