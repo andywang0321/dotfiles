@@ -21,6 +21,7 @@ return {
 	"neovim/nvim-lspconfig",
 	-- This lets lua-ls stop panicking in our neovim config lua files (remember the "undefined global: vim" errors?)
 	dependencies = {
+		'saghen/blink.cmp',
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
@@ -28,12 +29,15 @@ return {
 		},
 	},
 	config = function()
-		-- require("lspconfig").YOUR_LSP_HERE.setup({})
+		-- make LSPs talk to blink.cmp
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+		-- require("lspconfig").YOUR_LSP_HERE.setup { capabilities = capabilities }
 		-- see `:help lspconfig-all` to find some LSPs!
 		local lsp = require("lspconfig")
-		lsp.lua_ls.setup {}
-		lsp.ruff.setup {}
-		lsp.basedpyright.setup {}
+		lsp.lua_ls.setup { capabilities = capabilities }
+		lsp.ruff.setup { capabilities = capabilities }
+		lsp.basedpyright.setup { capabilities = capabilities }
 
 		-- keymaps, for more see `:help vim.lsp.buf`
 		local map = function(keys, func, desc) vim.keymap.set("n", keys, func, { desc = "LSP: " .. desc }) end

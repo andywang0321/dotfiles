@@ -13,9 +13,8 @@ vim.opt.shiftwidth = 4
 
 -- keymaps for easy executions
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>") -- same as ":source %<CR>"
-vim.keymap.set("n", "<leader>x", ":.lua<CR>")
-vim.keymap.set("v", "<leader>x", ":lua<CR>")
+local map = function(mode, keys, func, desc) vim.keymap.set(mode, keys, func, { desc = desc }) end
+map("n", "<leader>term", "<cmd>Floaterm<cr>", "Toggles FloaTerminal")
 
 -- nice highlight on yanks
 -- see `:help vim.highlight.on_yank()`
