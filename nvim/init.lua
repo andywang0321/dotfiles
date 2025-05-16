@@ -15,6 +15,14 @@ vim.opt.shiftwidth = 4
 vim.g.mapleader = " "
 local map = function(mode, keys, func, desc) vim.keymap.set(mode, keys, func, { desc = desc }) end
 map("n", "<leader>term", "<cmd>Floaterm<cr>", "Toggles FloaTerminal")
+local oil = require("oil")
+map("n", "<leader>oil", function()
+	oil.toggle_float()
+	require("oil.util").run_after_load(0, oil.open_preview)
+end, "Toggles Oil")
+map("n", "<leader>ipy", "<cmd>IpyToggle<cr>", "Toggle Ipython")
+map("n", "<S-CR>", "<cmd>IpySendLine<cr>", "Send Line to Ipython")
+map("v", "<S-CR>", "<Esc><cmd>'<,'>IpySendRange<cr>", "Send Selection to Ipython")
 
 -- nice highlight on yanks
 -- see `:help vim.highlight.on_yank()`

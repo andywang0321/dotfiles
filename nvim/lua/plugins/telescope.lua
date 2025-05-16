@@ -21,8 +21,8 @@ return {
 		map("<leader>help", tb.help_tags, "Find Help")
 		map("<leader>spell", tb.spell_suggest, "Spelling Suggestions")
 		map("<leader>reg", tb.registers, "Registers")
-		map("<leader>comm", tb.command_history, "Command History")
-		map("<leader>buff", tb.buffers, "Buffers")
+		map("<leader>comd", tb.command_history, "Command History")
+		map("<leader>buf", tb.buffers, "Buffers")
 		map("<leader>diag", tb.diagnostics, "Diagnostics")
 	end
 }

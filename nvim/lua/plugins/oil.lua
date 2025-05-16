@@ -7,9 +7,25 @@ return {
 	---@module 'oil'
 	---@type oil.SetupOpts
 	opts = {},
-	-- Optional dependencies
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-	-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 	lazy = false,
+	config = function()
+		local oil = require("oil")
+		oil.setup {
+			default_file_explorer = true,
+			float = {
+				max_width = 0.8,
+				max_height = 0.8,
+				border = "rounded",
+				preview_split = "right",
+			},
+			-- Configuration for the file preview window
+			preview_win = {
+				-- Whether the preview window is automatically updated when the cursor is moved
+				update_on_cursor_moved = true,
+				-- How to open the preview window "load"|"scratch"|"fast_scratch"
+				preview_method = "fast_scratch",
+			},
+		}
+	end,
 }
