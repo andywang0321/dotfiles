@@ -47,8 +47,8 @@ config = {
 		bottom = 5,
 	},
 	adjust_window_size_when_changing_font_size = false,
-	initial_rows = 24,
-	initial_cols = 100,
+	initial_rows = 48,
+	initial_cols = 130,
 }
 
 -- Tab bar
