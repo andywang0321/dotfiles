@@ -44,6 +44,11 @@ map("n", "<leader>zz", function()
   end
 end, "Toggle Cursor Centering & Cursorline")
 
+-- Obsidian workflow
+map('n', '<leader>ot', ':ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>', "Insert Note Template")
+map('n', '<leader>ok', ":!mv '%:p' " .. os.getenv("ZETTELKASTEN") .. '/zettelkasten<cr>:bd<cr>', "Keep Note")
+map('n', '<leader>odd', ":!rm '%:p'<cr>:bd<cr>", "Delete Note")
+
 -- nice highlight on yanks
 -- see `:help vim.highlight.on_yank()`
 -- see `:help vim.api.nvim_create_autocmd()`
