@@ -10,6 +10,8 @@ require("config.lazy") -- `require` is the lua version of python's `import`
 
 -- who uses a tab character 8 spaces wide for indenting?
 vim.opt.shiftwidth = 4
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- keymaps for easy executions
 vim.g.mapleader = " "

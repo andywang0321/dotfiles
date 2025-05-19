@@ -44,7 +44,6 @@ return {
 		map("K", vim.lsp.buf.hover, "Hover Documentation")
 		map("<leader>act", vim.lsp.buf.code_action, "Code Actions")
 		map("<leader>name", vim.lsp.buf.rename, "Rename")
-		--map("<leader>def", vim.lsp.buf.definition, "Goto Definition")
 		local tb = require("telescope.builtin")
 		map("<leader>def", tb.lsp_definitions, "Goto Definition")
 		map("<leader>ref", tb.lsp_references, "Goto References")
