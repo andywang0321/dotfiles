@@ -1,6 +1,6 @@
 -------------
 -- Lua.lua --
-------------- 
+-------------
 
 -- config options in `after` folder gets loaded AFTER main configs get loaded
 -- this is helpful if you want to overwrite default config options for specific filetypes
