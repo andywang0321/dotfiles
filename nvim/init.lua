@@ -18,6 +18,7 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 5
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
+vim.opt.linebreak = true
 
 -- keymaps for easy executions
 vim.g.mapleader = " "
