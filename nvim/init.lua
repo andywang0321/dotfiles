@@ -26,14 +26,11 @@ vim.opt.smartcase = true
 vim.g.mapleader = " "
 local map = function(mode, keys, func, desc) vim.keymap.set(mode, keys, func, { desc = desc }) end
 
--- FloaTerminal
-map("n", "<leader>term", "<cmd>Floaterm<cr>", "Toggles FloaTerminal")
-
 -- Oil + Preview = Nice file explorer
 local oil = require("oil")
 map("n", "<leader><leader>", function()
-  oil.toggle_float()
-  require("oil.util").run_after_load(0, oil.open_preview)
+	oil.toggle_float()
+	require("oil.util").run_after_load(0, oil.open_preview)
 end, "Toggles Oil")
 
 -- Interactive Neovim Terminal iPython
@@ -70,25 +67,36 @@ map('v', '<leader>`', 'c``<esc>Pl', 'Wrap in ticks')
 -- Don't yank on x
 map('n', 'x', '"_x', "Don't yank on x")
 
+-- Buffers
+map('n', '<leader>[', '<cmd>bp<cr>', 'Prev Buffer')
+map('n', '<leader>]', '<cmd>bn<cr>', 'Next Buffer')
+map('n', '<leader>d', '<cmd>bd<cr>', 'Close Buffer')
+
+-- Windows
+map('n', '<leader>w', '<cmd>q<cr>', 'Close Window')
+map('n', '<leader>t', '<cmd>BinarySplit<cr>', 'Split Intelligently')
+
+map('n', '<leader>key', '<cmd>Telescope keymaps<cr>', 'Browse Keymaps')
+
 -- nice highlight on yanks
 -- see `:help vim.highlight.on_yank()`
 -- see `:help vim.api.nvim_create_autocmd()`
 -- see `:help vim.api.nvim_create_augroup()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function() vim.highlight.on_yank() end,
+	desc = 'Highlight when yanking text',
+	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+	callback = function() vim.highlight.on_yank() end,
 })
 
 -- Relative line numbers in Normal Mode, Absolute in Insert Mode
 local insertmode_linenum = vim.api.nvim_create_augroup('insertmode-linenum', { clear = true })
 vim.api.nvim_create_autocmd('InsertEnter', {
-  desc = 'Absolute line numbers on entering Insert mode',
-  group = insertmode_linenum,
-  callback = function() vim.opt.relativenumber = false end
+	desc = 'Absolute line numbers on entering Insert mode',
+	group = insertmode_linenum,
+	callback = function() vim.opt.relativenumber = false end
 })
 vim.api.nvim_create_autocmd('InsertLeave', {
-  desc = 'Relative line numbers when exiting Insert mode',
-  group = insertmode_linenum,
-  callback = function() vim.opt.relativenumber = true end
+	desc = 'Relative line numbers when exiting Insert mode',
+	group = insertmode_linenum,
+	callback = function() vim.opt.relativenumber = true end
 })

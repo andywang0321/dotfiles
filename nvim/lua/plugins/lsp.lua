@@ -49,7 +49,7 @@ return {
     map("<leader>def", tb.lsp_definitions, "Goto Definition")
     map("<leader>ref", tb.lsp_references, "Goto References")
     map("<leader>imp", tb.lsp_implementations, "Goto Implementation")
-    map("<leader>type", tb.lsp_type_definitions, "Goto Type Definition")
+    --map("<leader>type", tb.lsp_type_definitions, "Goto Type Definition")
     map("<leader>sym", tb.lsp_document_symbols, "Document Symbols")
 
 
