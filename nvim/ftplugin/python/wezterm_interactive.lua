@@ -7,7 +7,7 @@ local create_ipy_pane = function()
   state.nvim_pane_id = os.getenv("WEZTERM_PANE")
   state.ipy_pane_id = vim.fn.system(
     'wezterm cli split-pane --right -- ' ..
-    'env MPLBACKEND="module://matplotlib-backend-wezterm" ' ..
+    'env MPLBACKEND="kitcat" ' ..
     'uv run --with ipython ipython'
   )
   vim.fn.system("wezterm cli activate-pane --pane-id " .. state.nvim_pane_id)
