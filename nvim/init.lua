@@ -19,6 +19,8 @@ vim.opt.scrolloff = 5
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 vim.opt.linebreak = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- keymaps for easy executions
 vim.g.mapleader = " "
@@ -50,11 +52,23 @@ map('n', '<leader>ok', ":!mv '%:p' " .. os.getenv("ZETTELKASTEN") .. '/zettelkas
 map('n', '<leader>odd', ":!rm '%:p'<cr>:bd<cr>", "Delete Note")
 
 -- Neovim split / Wezterm pane navigation
--- in .config/wezterm/wezterm.lua SUPER|SHIFT + h/j/k/l is mapped to sending CTRL + h/j/k/l if foreground process is Neovim.
-map('n', '<C-h>', '<cmd>FocusLeft<cr>', 'Focus Left')
-map('n', '<C-j>', '<cmd>FocusDown<cr>', 'Focus Down')
-map('n', '<C-k>', '<cmd>FocusUp<cr>', 'Focus Up')
-map('n', '<C-l>', '<cmd>FocusRight<cr>', 'Focus Right')
+-- in .config/wezterm/wezterm.lua SUPER|SHIFT + h/j/k/l is mapped to sending ALT + h/j/k/l if foreground process is Neovim.
+map('n', '<A-h>', '<cmd>FocusLeft<cr>', 'Focus Left')
+map('n', '<A-j>', '<cmd>FocusDown<cr>', 'Focus Down')
+map('n', '<A-k>', '<cmd>FocusUp<cr>', 'Focus Up')
+map('n', '<A-l>', '<cmd>FocusRight<cr>', 'Focus Right')
+
+-- Surround selection
+map('v', '<leader>(', 'c()<esc>Pl', 'Wrap in parentheses')
+map('v', '<leader>[', 'c[]<esc>Pl', 'Wrap in brackets')
+map('v', '<leader>{', 'c{}<esc>Pl', 'Wrap in braces')
+map('v', '<leader><', 'c<><esc>Pl', 'Wrap in angles brackets')
+map('v', '<leader>"', 'c""<esc>Pl', 'Wrap in double-quotes')
+map('v', "<leader>'", "c''<esc>Pl", 'Wrap in single-quotes')
+map('v', '<leader>`', 'c``<esc>Pl', 'Wrap in ticks')
+
+-- Don't yank on x
+map('n', 'x', '"_x', "Don't yank on x")
 
 -- nice highlight on yanks
 -- see `:help vim.highlight.on_yank()`
@@ -65,8 +79,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function() vim.highlight.on_yank() end,
 })
-local insertmode_linenum = vim.api.nvim_create_augroup('insertmode-linenum', { clear = true })
+
 -- Relative line numbers in Normal Mode, Absolute in Insert Mode
+local insertmode_linenum = vim.api.nvim_create_augroup('insertmode-linenum', { clear = true })
 vim.api.nvim_create_autocmd('InsertEnter', {
   desc = 'Absolute line numbers on entering Insert mode',
   group = insertmode_linenum,
