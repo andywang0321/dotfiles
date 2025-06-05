@@ -34,9 +34,10 @@ end
 -- When you’re in a markdown buffer, define :PandocPDF
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
+  group = vim.api.nvim_create_augroup('pandoc-render', { clear = true }),
   callback = function()
     -- buffer-local user command
-    vim.api.nvim_buf_create_user_command(0, 'PandocPDF', save_and_render, {
+    vim.api.nvim_buf_create_user_command(0, 'PDF', save_and_render, {
       nargs = '?',
       complete = function(ArgLead)
         -- offer markdown files in cwd
