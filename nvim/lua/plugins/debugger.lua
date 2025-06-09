@@ -36,6 +36,14 @@ return {
 
 		--dapui.setup()
 		dap_python.setup("uv")
+		table.insert(require('dap').configurations.python, {
+			type = 'python',
+			request = 'launch',
+			name = 'Run file in Nvim root directory',
+			program = '${file}',
+			cwd = vim.fn.getcwd()
+			-- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+		})
 		require("nvim-dap-virtual-text").setup()
 
 		dap.listeners.before.attach.dap_view_config = function() dap_view.open() end

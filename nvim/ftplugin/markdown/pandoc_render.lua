@@ -31,10 +31,10 @@ local save_and_render = function(opts)
   })
 end
 
--- When you’re in a markdown buffer, define :PandocPDF
+-- When you’re in a markdown buffer, define :PDF
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
-  group = vim.api.nvim_create_augroup('pandoc-render', { clear = true }),
+  --group = vim.api.nvim_create_augroup('pandoc-render', { clear = true }),
   callback = function()
     -- buffer-local user command
     vim.api.nvim_buf_create_user_command(0, 'PDF', save_and_render, {

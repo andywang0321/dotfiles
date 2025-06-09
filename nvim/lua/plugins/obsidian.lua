@@ -1,5 +1,5 @@
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
@@ -7,6 +7,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
     "nvim-treesitter",
+    "saghen/blink.cmp",
   },
   opts = {
     workspaces = {
@@ -19,9 +20,13 @@ return {
     notes_subdir = "inbox",
     new_notes_location = "notes_subdir",
 
-    -- Disable completion using nvim_cmp, use blink + marksman instead
-    completion = { nvim_cmp = false },
-    ui = { enable = false },
+    completion = {
+      nvim_cmp = false,
+      blink = true,
+      min_chars = 2,
+    },
+    ui = { enable = true },
+    attachments = { img_folder = "Files", },
 
     -- Customize how note IDs are generated given an optional title.
     ---@param title string|?

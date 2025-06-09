@@ -45,7 +45,8 @@ map("x", "<S-CR>", "<cmd>WeztermIpythonSendRange<cr>", "Send Selection to Wezter
 
 -- Obsidian workflow
 map('n', '<leader>ot', ':ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>', "Insert Note Template")
-map('n', '<leader>ok', ":!mv '%:p' " .. os.getenv("ZETTELKASTEN") .. '/zettelkasten<cr>:bd<cr>', "Keep Note")
+map('n', '<leader>ok', ":!mv '%:p' " .. string.gsub(os.getenv("ZETTELKASTEN"), " ", "\\ ") .. '/zettelkasten<cr>:bd<cr>',
+	"Keep Note")
 map('n', '<leader>odd', ":!rm '%:p'<cr>:bd<cr>", "Delete Note")
 
 -- Neovim split / Wezterm pane navigation
@@ -76,7 +77,11 @@ map('n', '<leader>d', '<cmd>bd<cr>', 'Close Buffer')
 map('n', '<leader>w', '<cmd>q<cr>', 'Close Window')
 map('n', '<leader>t', '<cmd>BinarySplit<cr>', 'Split Intelligently')
 
+-- Search Keymaps
 map('n', '<leader>key', '<cmd>Telescope keymaps<cr>', 'Browse Keymaps')
+
+-- Expand Diagnostic Message
+map('n', '<leader>err', '<cmd>lua vim.diagnostic.open_float()<cr>', 'Expand Diagnostic Message')
 
 -- nice highlight on yanks
 -- see `:help vim.highlight.on_yank()`
