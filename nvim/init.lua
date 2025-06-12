@@ -43,18 +43,12 @@ map("n", "<leader>ip", "<cmd>WeztermIpythonToggle<cr>", "Toggle Wezterm iPython 
 map({ "n", "i" }, "<S-CR>", "<cmd>WeztermIpythonSendLine<cr>", "Send Line to Wezterm iPython pane")
 map("x", "<S-CR>", "<cmd>WeztermIpythonSendRange<cr>", "Send Selection to Wezterm iPython pane")
 
--- Obsidian workflow
-map('n', '<leader>ot', ':ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>', "Insert Note Template")
-map('n', '<leader>ok', ":!mv '%:p' " .. string.gsub(os.getenv("ZETTELKASTEN"), " ", "\\ ") .. '/zettelkasten<cr>:bd<cr>',
-	"Keep Note")
-map('n', '<leader>odd', ":!rm '%:p'<cr>:bd<cr>", "Delete Note")
-
 -- Neovim split / Wezterm pane navigation
 -- in .config/wezterm/wezterm.lua SUPER|SHIFT + h/j/k/l is mapped to sending ALT + h/j/k/l if foreground process is Neovim.
-map('n', '<A-h>', '<cmd>FocusLeft<cr>', 'Focus Left')
-map('n', '<A-j>', '<cmd>FocusDown<cr>', 'Focus Down')
-map('n', '<A-k>', '<cmd>FocusUp<cr>', 'Focus Up')
-map('n', '<A-l>', '<cmd>FocusRight<cr>', 'Focus Right')
+map('n', '<M-h>', '<cmd>FocusLeft<cr>', 'Focus Left')
+map('n', '<M-j>', '<cmd>FocusDown<cr>', 'Focus Down')
+map('n', '<M-k>', '<cmd>FocusUp<cr>', 'Focus Up')
+map('n', '<M-l>', '<cmd>FocusRight<cr>', 'Focus Right')
 
 -- Surround selection
 map('v', '<leader>(', 'c()<esc>Pl', 'Wrap in parentheses')

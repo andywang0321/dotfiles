@@ -20,6 +20,7 @@ Neovim already has a really nice LSP client built in, it is now just waiting for
 return {
   "neovim/nvim-lspconfig",
   -- This lets lua-ls stop panicking in our neovim config lua files (remember the "undefined global: vim" errors?)
+  enabled = true,
   dependencies = {
     'saghen/blink.cmp',
     {
