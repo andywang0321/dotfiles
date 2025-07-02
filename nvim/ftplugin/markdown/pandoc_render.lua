@@ -7,8 +7,8 @@ local save_and_render = function(opts)
   local input = opts.args ~= '' and opts.args or vim.fn.expand('%:p')
   -- strip path and extension, keep only basename
   local base = vim.fn.fnamemodify(input, ':t:r')
-  -- put the PDF in ~/Downloads/
-  local output = vim.fn.expand('~/Downloads/') .. base .. '.pdf'
+  -- put the PDF in ~/Documents/zettelrenders/
+  local output = vim.fn.expand('~/Documents/zettelrenders') .. base .. '.pdf'
   -- build pandoc cmd with 2cm all-around margin
   local cmd = {
     'pandoc',
