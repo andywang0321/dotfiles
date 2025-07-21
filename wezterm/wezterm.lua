@@ -22,6 +22,7 @@ colors.everforest = {
   },
 }
 
+
 config = {
   automatically_reload_config = true,
   window_close_confirmation = "NeverPrompt",

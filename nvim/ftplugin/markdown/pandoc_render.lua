@@ -8,7 +8,7 @@ local save_and_render = function(opts)
   -- strip path and extension, keep only basename
   local base = vim.fn.fnamemodify(input, ':t:r')
   -- put the PDF in ~/Documents/zettelrenders/
-  local output = vim.fn.expand('~/Documents/zettelrenders') .. base .. '.pdf'
+  local output = vim.fn.expand('~/Documents/zettelrenders/') .. base .. '.pdf'
   -- build pandoc cmd with 2cm all-around margin
   local cmd = {
     'pandoc',
@@ -23,7 +23,7 @@ local save_and_render = function(opts)
     on_exit = function(_, code)
       if code == 0 then
         print('🖨️  Generated PDF → ' .. output)
-        vim.cmd("!open " .. output)
+        vim.cmd('!open "' .. output .. '"')
       else
         print('❌ pandoc failed (exit ' .. code .. ')')
       end
